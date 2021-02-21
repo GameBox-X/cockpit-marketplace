@@ -4,9 +4,14 @@
         "cockpit": "137"
     },
 
-    "tools": {
+    "menu": {
         "index": {
-            "label": "Starter Kit"
+            "label": "Plugin Marketplace",
+            "keywords":[
+                {
+                    "matches":["marketplace","plugins","plugin","market","install"]
+                }
+            ]
         }
     }
 }

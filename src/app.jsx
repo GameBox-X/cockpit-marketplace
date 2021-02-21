@@ -19,7 +19,8 @@
 
 import cockpit from 'cockpit';
 import React from 'react';
-import { Alert, Card, CardTitle, CardBody } from '@patternfly/react-core';
+import { Alert, Card, CardTitle, CardBody, Menu, MenuList, MenuItem, Grid, GridItem } from '@patternfly/react-core';
+// import $ from 'jquery';
 
 const _ = cockpit.gettext;
 
@@ -28,6 +29,10 @@ export class Application extends React.Component {
         super();
         this.state = { hostname: _("Unknown") };
 
+        // const process = cockpit.spawn("whoami");
+        // $.ajax({
+        //     url:""
+        // })
         cockpit.file('/etc/hostname').watch(content => {
             this.setState({ hostname: content.trim() });
         });
@@ -38,10 +43,21 @@ export class Application extends React.Component {
             <Card>
                 <CardTitle>Starter Kit</CardTitle>
                 <CardBody>
-                    <Alert
-                        variant="info"
-                        title={ cockpit.format(_("Running on $0"), this.state.hostname) }
-                    />
+                    <Grid hasGutter>
+                        <GridItem span={1}>
+                            <Menu>
+                                <MenuList>
+                                    <MenuItem>Test</MenuItem>
+                                </MenuList>
+                            </Menu>
+                        </GridItem>
+                        <GridItem span={6}>
+                            <Alert
+                                variant="info"
+                                title={ cockpit.format(_("Running on $0"), this.state.hostname) }
+                            />
+                        </GridItem>
+                    </Grid>
                 </CardBody>
             </Card>
         );
